@@ -1,21 +1,28 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        // Welcome Message
         System.out.println("=== Train Consist Management App ===");
 
-        // Initialize empty list for bogies
-        List<String> trainConsist = new ArrayList<>();
+        // Create HashSet for Bogie IDs
+        Set<String> bogieIds = new HashSet<>();
 
-        // Display initial bogie count
-        System.out.println("Train consist initialized successfully.");
-        System.out.println("Initial number of bogies: " + trainConsist.size());
+        // 🔹 Add bogie IDs (including duplicates)
+        bogieIds.add("BG101");
+        bogieIds.add("BG102");
+        bogieIds.add("BG103");
+        bogieIds.add("BG101"); // duplicate
+        bogieIds.add("BG102"); // duplicate
 
-        // Program continues...
-        System.out.println("Ready to add bogies in next use cases...");
+        // 🔹 Display unique bogie IDs
+        System.out.println("\nUnique Bogie IDs:");
+        System.out.println(bogieIds);
+
+        System.out.println("\nNote: Duplicate IDs are automatically removed!");
+
+        System.out.println("\nProgram continues...");
     }
 }
