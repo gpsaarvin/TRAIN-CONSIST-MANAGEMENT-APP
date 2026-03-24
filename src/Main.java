@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 public class TrainConsistApp {
 
@@ -7,33 +6,30 @@ public class TrainConsistApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // Create ArrayList for passenger bogies
-        List<String> passengerBogies = new ArrayList<>();
+        // Create LinkedList for train consist
+        LinkedList<String> trainConsist = new LinkedList<>();
 
         // 🔹 Add bogies
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        // 🔹 Display bogies after addition
-        System.out.println("\nPassenger Bogies after addition:");
-        System.out.println(passengerBogies);
+        // 🔹 Insert Pantry Car at position 2
+        trainConsist.add(2, "Pantry");
 
-        // 🔹 Remove a bogie (AC Chair)
-        passengerBogies.remove("AC Chair");
+        // 🔹 Display after insertion
+        System.out.println("\nTrain Consist after adding Pantry:");
+        System.out.println(trainConsist);
 
-        // 🔹 Display after removal
-        System.out.println("\nPassenger Bogies after removal of AC Chair:");
-        System.out.println(passengerBogies);
+        // 🔹 Remove first and last bogie
+        trainConsist.removeFirst();
+        trainConsist.removeLast();
 
-        // 🔹 Check if Sleeper exists
-        boolean exists = passengerBogies.contains("Sleeper");
-
-        System.out.println("\nIs 'Sleeper' bogie present? " + exists);
-
-        // 🔹 Final list state
-        System.out.println("\nFinal Passenger Bogies List:");
-        System.out.println(passengerBogies);
+        // 🔹 Final consist
+        System.out.println("\nFinal Train Consist:");
+        System.out.println(trainConsist);
 
         System.out.println("\nProgram continues...");
     }
