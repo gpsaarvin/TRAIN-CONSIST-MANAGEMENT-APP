@@ -1,10 +1,7 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
-/**
- * UC7: Sort Bogies by Capacity using Comparator
- * Demonstrates custom sorting of objects.
- */
-
+// 🔹 Bogie Class
 class Bogie {
     String name;
     int capacity;
@@ -20,33 +17,32 @@ class Bogie {
     }
 }
 
+// 🔹 Main Class
 public class TrainConsistApp {
 
     public static void main(String[] args) {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // 🔹 Create list of bogies
+        // 🔹 Create bogie list (same as UC7)
         List<Bogie> bogies = new ArrayList<>();
-
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
         bogies.add(new Bogie("First Class", 24));
+        bogies.add(new Bogie("Luxury Coach", 80));
 
-        // 🔹 Before sorting
-        System.out.println("\nBefore Sorting:");
-        for (Bogie b : bogies) {
-            System.out.println(b);
-        }
+        // 🔹 Display original list
+        System.out.println("\nAll Bogies:");
+        bogies.forEach(System.out::println);
 
-        // 🔹 Sort using Comparator (by capacity)
-        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+        // 🔹 Filter using Stream API (capacity > 60)
+        List<Bogie> filteredBogies = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
 
-        // 🔹 After sorting
-        System.out.println("\nAfter Sorting (Ascending by Capacity):");
-        for (Bogie b : bogies) {
-            System.out.println(b);
-        }
+        // 🔹 Display filtered list
+        System.out.println("\nFiltered Bogies (Capacity > 60):");
+        filteredBogies.forEach(System.out::println);
 
         System.out.println("\nProgram continues...");
     }
