@@ -1,5 +1,5 @@
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.stream.*;
 
 // 🔹 Bogie Class
 class Bogie {
@@ -13,7 +13,7 @@ class Bogie {
 
     @Override
     public String toString() {
-        return name + "(" + capacity + ")";
+        return name + " → Capacity: " + capacity;
     }
 }
 
@@ -29,24 +29,20 @@ public class TrainConsistApp {
 
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
-        bogies.add(new Bogie("Sleeper", 72)); // duplicate type
         bogies.add(new Bogie("First Class", 24));
-        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("Luxury Coach", 80));
 
-        // 🔹 Display original list
-        System.out.println("\nAll Bogies:");
+        // 🔹 Display bogies
+        System.out.println("\nBogies:");
         bogies.forEach(System.out::println);
 
-        // 🔹 Group by bogie type (name)
-        Map<String, List<Bogie>> groupedBogies = bogies.stream()
-                .collect(Collectors.groupingBy(b -> b.name));
+        // 🔹 Calculate total capacity using Stream
+        int totalSeats = bogies.stream()
+                .map(b -> b.capacity)          // extract capacity
+                .reduce(0, Integer::sum);      // sum all values
 
-        // 🔹 Display grouped result
-        System.out.println("\nGrouped Bogies by Type:");
-
-        for (Map.Entry<String, List<Bogie>> entry : groupedBogies.entrySet()) {
-            System.out.println(entry.getKey() + " → " + entry.getValue());
-        }
+        // 🔹 Display result
+        System.out.println("\nTotal Seating Capacity: " + totalSeats);
 
         System.out.println("\nProgram continues...");
     }
